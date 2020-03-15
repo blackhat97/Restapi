@@ -1,0 +1,31 @@
+{
+  "name": "restapi",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www",
+    "db": "(npm run db-stop || true) && docker run --name=comicDB -d --rm -v $(pwd)/db_scheme/main.sql:/docker-entrypoint-initdb.d/01_main.sql:ro -v /Users/jun/Documents/mysql_dir:/var/lib/mysql:rw  -e MYSQL_ROOT_PASSWORD=wysl1@ -e MYSQL_DATABASES=main -p 3306:3306 mysql:5.7.28 mysqld --innodb_print_all_deadlocks=ON --character-set-server=utf8 --collation-server=utf8_unicode_ci && npm run db-log",
+    "db-stop": "docker rm -fv comicDB",
+    "db-exec": "docker exec -it comicDB /bin/bash",
+    "db-log": "docker logs -f comicDB"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.0.0",
+    "cors": "^2.8.4",
+    "jsonwebtoken": "^8.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.18.2",
+    "eslint-config-walmart": "^2.2.0",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-import": "^2.8.0",
+    "jasmine": "^3.1.0",
+    "nodemon": "^1.17.1"
+  }
+}
