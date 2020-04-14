@@ -46,22 +46,17 @@ db.query = util.promisify(db.query);
 
 const startDB = async () => {
     try {
-        const existQuery = await db.query(`SELECT EXISTS (
-            SELECT 1
-            FROM   information_schema.tables 
-            WHERE  table_schema = 'main'
-          );`);
-          if (!existQuery.row[0].exists) {
-            console.log('No main Schema detected. Creating now.');
-            const sql = await getFile('./db_scheme/main.sql', 'utf8');
+        const existQuery = await db.query(`SELECT * FROM main.Comic;`);
+        if (existQuery.length == 0) {
+            console.log('No data detected. Creating now.');
+            const sql = await getFile('./db_scheme/db_initial_setting.sql', 'utf8');
             await db.query(sql);
             return true;
-          }
-          return false;
+        }
+        return false;
+        
     } catch (e) {
-        console.error('Could not connect to postgres database. Please be sure the server is running.');
-        console.error('You may also need to set the SQL_USER, SQL_DATABASE and SQL_PASSWORD variables in config/config.json.');
-        console.error('For more details read https://node-postgres.com/features/connecting');
+        console.error('Could not connect to Mysql database. Please be sure the server is running.');
         throw e;
     }
 }

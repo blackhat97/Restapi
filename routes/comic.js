@@ -15,17 +15,28 @@ router.get('/comics', async (req, res, next) => {
   }
 });
 
-/* Get a single comic from url */
-router.get('/get/:comicURL', async (req, res, next) => {
+router.get('/info/:comicID', async (req, res, next) => {
   try {
-    const comicURL = req.params.comicURL;
+    const comicID = req.params.comicID;
+    const result = await comicModel.getComicInfo(comicID);
+    res.json(result);
+  } catch (err) {
+    next(err);
+    return;
+  }
+});
 
-    const comic = await comicModel.getPublishedComic(comicURL);
-    if (comic === -1) {
-      res.status(400).send(`No comic with url ${comicURL}`);
+/* Get a single comic from url */
+router.get('/content/:chapterID', async (req, res, next) => {
+  try {
+    const chapterID = req.params.chapterID;
+    
+    const content = await comicModel.getPublishedContent(chapterID);
+    if (content === -1) {
+      res.status(400).send(`episode ${chapterID} is private`);
       return;
     }
-    res.json(comic);
+    res.json(content);
   } catch (err) {
     next(err);
     return;

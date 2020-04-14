@@ -3,10 +3,26 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
+const {
+    startDB
+} = require('./models/db');
+
 const index = require('./routes/index');
 const comic = require('./routes/comic');
+const profile = require('./routes/profile');
+const comment = require('./routes/comment');
+//const upload = require('./routes/upload');
 
 var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+const setup = async () => {
+    await startDB();
+}
+setup();
 
 const whitelist = new Set([
     'http://localhost:4200',
@@ -25,7 +41,8 @@ const corsOptions = {
     }
 };
 
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -33,7 +50,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+//app.use('/upload', upload);
 app.use('/api/comics', comic);
+app.use('/api/profile', profile);
+app.use('/api/comment', comment);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

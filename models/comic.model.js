@@ -10,8 +10,10 @@ const {db} = require('./db');
 const getAllComics = async () => {
     try {
         const result = await db.query(`
-            SELECT comicID, accountID, title, comicURL, tagline, description, thumbnailURL 
-            FROM main.Comic ORDER BY title`);
+            SELECT com.comicID, com.title, com.thumbnailURL, com.author, com.favorite, sch.updateType as day
+            FROM main.Comic AS com
+            INNER JOIN main.Schedule AS sch ON com.comicID = sch.comicID
+            ORDER BY comicID`);
         return result;
     } catch(err) {
         throw err;
@@ -19,35 +21,41 @@ const getAllComics = async () => {
 }
 
 /**
- * Gets a single comic
+ * Gets a comic deatil information
  *
- * @param {*} comic - vessel to store comic info in
+ * @param {*} comicURL
  *
- * @returns {*} Returns info about the comic
+ * @returns {*} Returns info about the result
  */
-const getComicInfo = async comic => {
+const getComicInfo = async comicID => {
     try {
-        const comicID = comic.comicID;
+        let result = {};
 
-        comic.chapters = await db.query(`
+        result.info = await db.query(`
+            SELECT title, coverURL, author, favorite, view, description
+            FROM main.Comic
+            WHERE comicID = ?`, [comicID]);
+
+        result.chapters = await db.query(`
             SELECT *
             FROM main.Chapter
-            WHERE comicID = ?
-            ORDER BY chapterNumber`, [comicID]);
+            WHERE comicID = ?`, [comicID]);
+        
+        return result;
+    } catch (err) {
+        throw err;
+    }
+};
 
-        comic.volumes = await db.query(`
-            SELECT *
-            FROM main.Volume
-            WHERE comicID = ?
-            ORDER BY volumeNumber`, [comicID]);
-
-        comic.pages = await db.query(`
-            SELECT *
-            FROM main.Page
-            WHERE comicID = ?
-            ORDER BY pageNumber`, [comicID]);
-
-        return comic;
+const getComicContent = async chapter => {
+    try {
+        const chapterID = chapter.chapterID;
+        const result = await db.query(`
+            SELECT pageNumber, altText, imgURL
+            FROM main.Page 
+            WHERE chapterID = ?
+            ORDER BY pageNumber`, [chapterID]);
+        return result;
     } catch (err) {
         throw err;
     }
@@ -56,20 +64,20 @@ const getComicInfo = async comic => {
 /**
  * Gets a single published comic
  *
- * @param {string} comicURL - id of the comic owner's account
+ * @param {string} chapterID - id of the comic owner's account
  *
- * @returns {*} Returns info about the comic owned by an author if it is published
+ * @returns {*} Returns comic page contents if it is published
  */
-const getPublishedComic = async comicURL => {
+const getPublishedContent = async chapterID => {
     try {
-        const comicQuery = await db.query(`
-            SELECT * FROM main.Comic 
-            WHERE comicURL = ? AND published = 1`, [comicURL]
+        const chapterQuery = await db.query(`
+            SELECT * FROM main.Chapter 
+            WHERE chapterID = ? AND published = 1`, [chapterID]
         );
-        if (comicQuery.rowCount === 0) {
+        if (chapterQuery.length === 0) {
             return -1;
         }
-        return (await getComicInfo(comicQuery[0]));
+        return (await getComicContent(chapterQuery[0]));
     } catch (err) {
         throw err;
     }
@@ -78,5 +86,6 @@ const getPublishedComic = async comicURL => {
 
 module.exports = {
     getAllComics,
-    getPublishedComic,
+    getComicInfo,
+    getPublishedContent,
 };

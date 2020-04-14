@@ -1,6 +1,13 @@
 CREATE SCHEMA IF NOT EXISTS main DEFAULT CHARACTER SET utf8;
 USE main;
 
+--
+-- Table structure for table `Account`
+--
+
+DROP TABLE IF EXISTS `Account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE main.Account (
     accountID           SERIAL PRIMARY KEY,
     username            VARCHAR(30) NOT NULL CHECK(username LIKE '[a-zA-Z0-9]+( [a-zA-Z0-9]+)*'),
@@ -16,6 +23,13 @@ CREATE TABLE main.Account (
 );
 
 
+--
+-- Table structure for table `Message`
+--
+
+DROP TABLE IF EXISTS `Message`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE main.Message (
     messageID           SERIAL PRIMARY KEY,
     senderID            INTEGER NOT NULL,
@@ -26,6 +40,14 @@ CREATE TABLE main.Message (
     timeSent            TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 
+
+--
+-- Table structure for table `Comic`
+--
+
+DROP TABLE IF EXISTS `Comic`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE main.Comic (
     comicID             SERIAL PRIMARY KEY,
     accountID           INTEGER NOT NULL,
@@ -40,6 +62,13 @@ CREATE TABLE main.Comic (
     updated             DATETIME DEFAULT now() NOT NULL
 );
 
+--
+-- Table structure for table `Volume`
+--
+
+DROP TABLE IF EXISTS `Volume`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE main.Volume (
     volumeID            SERIAL PRIMARY KEY,
     comicID             INTEGER NOT NULL,
@@ -49,6 +78,13 @@ CREATE TABLE main.Volume (
     UNIQUE( volumeNumber, comicID )
 );
 
+--
+-- Table structure for table `Chapter`
+--
+
+DROP TABLE IF EXISTS `Chapter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE main.Chapter (
     chapterID           SERIAL PRIMARY KEY,
     volumeID            INTEGER,
@@ -60,6 +96,13 @@ CREATE TABLE main.Chapter (
 );
 
 
+--
+-- Table structure for table `Page`
+--
+
+DROP TABLE IF EXISTS `Page`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE main.Page (
     pageID              SERIAL PRIMARY KEY,
     pageNumber          INTEGER NOT NULL,
@@ -72,6 +115,13 @@ CREATE TABLE main.Page (
 );
 
 
+--
+-- Table structure for table `Schedule`
+--
+
+DROP TABLE IF EXISTS `Schedule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE main.Schedule (
     comicID             INTEGER,
     updateDay           INTEGER, -- Range is 1 to 7, where Sunday is 1 and Saturday is 7
