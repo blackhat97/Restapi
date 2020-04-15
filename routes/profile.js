@@ -6,16 +6,16 @@ const { db } = require('../models/db');
 
 
 // allows a user to view any person's enabled profile
-router.get('/profiles/:profileURL', async (req, res, next) => {
+router.get('/profiles/:profileID', async (req, res, next) => {
     try {
         const userInfoQuery = await db.query(`
             SELECT username, biography, email, joined
-            FROM main.Account 
-            WHERE profileURL = ?
-        `, [req.params.profileURL]);
+            FROM main.Account
+            WHERE profileID = ?
+        `, [req.params.profileID]);
 
         if (userInfoQuery.length === 0) {
-            res.status(400).send(`No profile with url${ req.params.profileURL}`);
+            res.status(400).send(`No profile with id ${ req.params.profileID}`);
             return;
         }
         console.log(userInfoQuery);

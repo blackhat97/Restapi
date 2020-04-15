@@ -4,10 +4,20 @@ var express = require('express');
 var router = express.Router();
 const comicModel = require('../models/comic.model');
 
-/* GET home page. */
+/* GET all series */
 router.get('/comics', async (req, res, next) => {
   try {
     const result = await comicModel.getAllComics();
+    res.json(result);
+  } catch (err) {
+    next(err);
+    return;
+  }
+});
+
+router.get('/comics/rank', async (req, res, next) => {
+  try {
+    const result = await comicModel.getRankComics();
     res.json(result);
   } catch (err) {
     next(err);

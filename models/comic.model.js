@@ -10,10 +10,27 @@ const {db} = require('./db');
 const getAllComics = async () => {
     try {
         const result = await db.query(`
-            SELECT com.comicID, com.title, com.thumbnailURL, com.author, com.favorite, sch.updateType as day
+            SELECT com.comicID, com.title, com.thumbnailURL, com.author, com.favorite, sch.updateDay as day, JSON_ARRAYAGG(gen.genre) as genre
             FROM main.Comic AS com
             INNER JOIN main.Schedule AS sch ON com.comicID = sch.comicID
-            ORDER BY comicID`);
+            INNER JOIN main.Genre AS gen ON com.comicID = gen.comicID
+            GROUP BY comicID;`);
+        
+        return result;
+
+    } catch(err) {
+        throw err;
+    }
+}
+
+const getRankComics = async () => {
+    try {
+        const result = await db.query(`
+            SELECT  @curRank := @curRank + 1 AS rank,
+                    comicID, title, author, thumbnailURL, favorite, view
+            FROM      main.Comic, (SELECT @curRank := 0) r
+            ORDER BY  favorite DESC;`);
+
         return result;
     } catch(err) {
         throw err;
@@ -86,6 +103,7 @@ const getPublishedContent = async chapterID => {
 
 module.exports = {
     getAllComics,
+    getRankComics,
     getComicInfo,
     getPublishedContent,
 };
