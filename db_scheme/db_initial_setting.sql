@@ -1,25 +1,15 @@
 USE `main`;
 
-LOCK TABLES `Account` WRITE;
---
--- Dumping data for table `Account`
---
-
-LOCK TABLES `Account` WRITE;
-/*!40000 ALTER TABLE `Account` DISABLE KEYS */;
-INSERT INTO `Account` VALUES (10,'c',NULL,'c',0,0,NULL,'2020-03-15 10:25:21','12345678','c','user');
-/*!40000 ALTER TABLE `Account` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Dumping data for table `Chapter`
 --
 
 LOCK TABLES `Chapter` WRITE;
 /*!40000 ALTER TABLE `Chapter` DISABLE KEYS */;
-INSERT INTO `Chapter` VALUES (1,1,1,'챕터1',1,1);
+INSERT INTO `Chapter` VALUES (10001,'/episodes/lore-olympus/001/thumb.png','Episode 1',1,'2018-03-04 00:00:00',0,1),(10002,'/episodes/lore-olympus/002/thumb.png','Episode 2',2,'2018-03-04 00:00:00',1,1),(10003,'/episodes/lore-olympus/105/thumb.png','Episode 101',105,'2020-03-08 00:00:00',1,1),(10004,'/episodes/lore-olympus/106/thumb.png','Episode 102',106,'2020-03-15 00:00:00',1,1),(10005,'/episodes/subzero/001/thumb.png','Episode 0',1,'2018-10-22 00:00:00',1,2),(10006,'/episodes/subzero/002/thumb.png','Episode 1',2,'2018-10-22 00:00:00',1,2),(10007,'/episodes/subzero/063/thumb.png','Episode 58',61,'2020-03-09 00:00:00',1,2),(10008,'/episodes/subzero/064/thumb.png','Episode 59',62,'2020-03-16 00:00:00',1,2),(10009,'/episodes/untouchable/001/thumb.png','Prologue',1,'2014-07-01 00:00:00',1,3),(10010,'/episodes/untouchable/002/thumb.png','Ep. 1 - Gosh! Not There!',2,'2014-07-01 00:00:00',1,3),(10011,'/episodes/untouchable/140/thumb.png','Ep. 138 - Last Episode',140,'2017-05-20 00:00:00',1,3),(10012,'/episodes/untouchable/141/thumb.png','Ep. 139 - Epilogue ~Touch~',141,'2017-05-27 00:00:00',1,3),(10013,'/episodes/super-secret/001/thumb.png','Ep. 0',1,'2016-05-04 00:00:00',1,4),(10014,'/episodes/super-secret/002/thumb.png','Ep. 1',2,'2016-05-04 00:00:00',1,4),(10015,'/episodes/super-secret/142/thumb.png','Epilogue 2',142,'2019-01-02 00:00:00',1,4),(10016,'/episodes/super-secret/143/thumb.png','Afterword',143,'2019-01-09 00:00:00',1,4),(10017,'/episodes/oh-holy/001/thumb.png','Ep. 1',1,'2016-10-17 00:00:00',1,5),(10018,'/episodes/oh-holy/002/thumb.png','Ep. 2',2,'2016-10-17 00:00:00',1,5),(10019,'/episodes/oh-holy/140/thumb.png','Ep. 140 (Last Episode)',140,'2019-06-03 00:00:00',1,5),(10020,'/episodes/oh-holy/141/thumb.png','Epilogue',141,'2019-06-10 00:00:00',1,5),(10021,'/episodes/letsplay/001/thumb.png','Ep. 1',1,'2017-11-07 00:00:00',1,6),(10022,'/episodes/letsplay/002/thumb.png','Ep. 2',2,'2017-11-07 00:00:00',1,6),(10023,'/episodes/letsplay/111/thumb.png','Ep. 104',108,'2020-03-10 00:00:00',1,6),(10024,'/episodes/letsplay/112/thumb.png','Ep. 105',109,'2020-03-17 00:00:00',1,6),(10025,'/episodes/truebeauty/001/thumb.png','Episode 1',1,'2018-03-04 00:00:00',1,7),(10026,'/episodes/truebeauty/002/thumb.png','Episode 2',2,'2018-03-04 00:00:00',1,7),(10027,'/episodes/truebeauty/085/thumb.png','Episode 84',85,'2020-03-11 00:00:00',1,7),(10028,'/episodes/truebeauty/086/thumb.png','Episode 85',86,'2020-03-18 00:00:00',1,7),(10029,'/episodes/bts-save-me/001/thumb.png','Prologue',1,'2018-03-04 00:00:00',1,8),(10030,'/episodes/bts-save-me/002/thumb.png','Ep.1',2,'2018-03-04 00:00:00',1,8),(10031,'/episodes/bts-save-me/014/thumb.png','Ep.14',15,'2020-03-08 00:00:00',1,8),(10032,'/episodes/bts-save-me/015/thumb.png','Ep.15',16,'2020-03-15 00:00:00',1,8),(10033,'/episodes/days-of-hana/001/thumb.png','Ep. 1',1,'2018-03-04 00:00:00',1,9),(10034,'/episodes/days-of-hana/002/thumb.png','Ep. 2',2,'2018-03-04 00:00:00',1,9),(10035,'/episodes/days-of-hana/112/thumb.png','Ep. 112',112,'2020-03-08 00:00:00',1,9),(10036,'/episodes/days-of-hana/113/thumb.png','Ep. 113 (Last Episode)',113,'2020-03-15 00:00:00',1,9),(10037,'/episodes/lookism/001/thumb.png','Ep. 1',1,'2018-03-04 00:00:00',1,10),(10038,'/episodes/lookism/002/thumb.png','Ep. 2',2,'2018-03-04 00:00:00',1,10),(10039,'/episodes/lookism/273/thumb.png','Ep. 273: Hostel (4)',273,'2020-03-08 00:00:00',1,10),(10040,'/episodes/lookism/274/thumb.png','Ep. 274: Hostel (5)',274,'2020-03-15 00:00:00',1,10),(10041,'/episodes/refundhighschool/001/thumb.png','Ep. 1',1,'2018-04-19 00:00:00',1,11),(10042,'/episodes/refundhighschool/002/thumb.png','Ep. 2',2,'2018-04-19 00:00:00',1,11),(10043,'/episodes/refundhighschool/134/thumb.png','Ep. 134 (Last Episode)',134,'2019-07-18 00:00:00',1,11),(10044,'/episodes/refundhighschool/135/thumb.png','Ep. 135 (Epilogue)',135,'2019-07-21 00:00:00',1,11),(10045,'/episodes/tower-of-god/001/thumb.png','[Season 1] Ep. 0',1,'2018-03-04 00:00:00',1,12),(10046,'/episodes/tower-of-god/002/thumb.png','[Season 1] Ep. 1 - 1F.Headon\'s Floor',2,'2018-03-04 00:00:00',1,12),(10047,'/episodes/tower-of-god/470/thumb.png','[Season 3] Ep. 52',469,'2020-03-08 00:00:00',1,12),(10048,'/episodes/tower-of-god/471/thumb.png','[Season 3] Ep. 53',470,'2020-03-15 00:00:00',1,12),(10049,'/episodes/noblesse/001/thumb.png','Ep. 1',1,'2018-03-04 00:00:00',1,13),(10050,'/episodes/noblesse/002/thumb.png','Ep. 2',2,'2018-03-04 00:00:00',1,13),(10051,'/episodes/noblesse/542/thumb.png','Ep. 542',543,'2020-03-08 00:00:00',1,13),(10052,'/episodes/noblesse/543/thumb.png','Ep. 543 (Last Episode)',544,'2020-03-15 00:00:00',1,13);
 /*!40000 ALTER TABLE `Chapter` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `Comic`
@@ -27,18 +17,30 @@ UNLOCK TABLES;
 
 LOCK TABLES `Comic` WRITE;
 /*!40000 ALTER TABLE `Comic` DISABLE KEYS */;
-INSERT INTO `Comic` VALUES (1,10,'a-title','a','a',1,'a-tagline','a-description','pages','2020-03-15 09:33:43','2020-03-15 09:33:43'),(2,10,'b-title','b','b',1,'b-tagline','b-description','pages','2020-03-15 10:28:40','2020-03-15 10:28:40');
+INSERT INTO `Comic` VALUES (1,'Lore Olympus','lore-olympus','/posters/lore-olympus.jpg','/big-images/lore-olympus.jpg','Rachel Smythe',10,10,'Witness what the gods do…after dark. The friendships and the lies, the gossip and the wild parties, and of course, forbidden love. Because it turns out, the gods aren’t so different from us after all, especially when it comes to their problems. Stylish and immersive, this is one of mythology’s greatest stories -- The Taking of Persephone -- as it’s never been told before.','2020-03-15 09:33:43','2020-03-15 09:33:43'),(2,'SubZero','subzero','/posters/subzero.jpg','/big-images/subzero.jpg','Junepurrr',10,10,'What would you sacrifice to save your family?  How far would you go to protect your people? For Clove, the last princess of a near-extinct Dragon clan, the answer is the unthinkable:  MARRY your greatest sworn enemy in an effort to bring peace to your land.','2020-03-15 10:28:40','2020-03-15 10:28:40'),(3,'unTouchable','untouchable','/posters/untouchable.jpg','/big-images/untouchable.jpg','masstar',0,0,'Sia Lee is a modern-day vampire who absorbs energy from humans by touching them instead of drinking their blood. She has been desperate to touch Jiho since the day he moved in next door—but he\'s a germaphobe. Will Sia best his mysophobia and touch Jiho?','2020-03-15 10:28:40','2020-03-15 10:28:40'),(4,'Super Secret','super-secret','/posters/super-secret.jpg','/big-images/super-secret.jpg','eon',3,3,'The boy next door, friends for life, is actually a werewolf!','2020-03-15 10:28:40','2020-03-15 10:28:40'),(5,'Oh! Holy','oh-holy','/posters/oh-holy.jpg','/big-images/oh-holy.jpg','Ahyun',0,0,'A perfect school idol meets a gloomy loner boy!','2020-03-15 10:28:40','2020-03-15 10:28:40'),(6,'Let’s Play','letsplay','/posters/letsplay.jpg','/big-images/letsplay.jpg','Mongie',0,0,'The boy next door, friends for life, is actually a werewolf!','2020-03-15 10:28:40','2020-03-15 10:28:40'),(7,'True Beauty','truebeauty','/posters/truebeauty.jpg','/big-images/truebeauty.jpg','Yaongyi',0,0,'After binge-watching beauty videos online, a shy, comic book fan masters the art of make-up, then sees her social standing skyrocket as she becomes her school’s prettiest pretty girl literally overnight. But will her elite status be short lived? How long can she keep her “real self” a secret? And what about that cute boy she likes? Could you imagine if he found out the truth?','2020-03-15 10:28:40','2020-03-15 10:28:40'),(8,'SAVE ME','bts-save-me','/posters/bts-save-me.jpg','/big-images/bts-save-me.jpg','LICO',0,0,'Seven boys. Best friends. Their fates intertwined through the good times together, but also the tough times, as they have gone their separate ways and suffered greatly as a result. When all is almost lost for these boys, one is given a special chance to go back in time and help his friends fix the mistakes that led them down this path. He’ll do anything to save them, but can he? Or is he too late?','2020-03-15 10:28:40','2020-03-15 10:28:40'),(9,'Days of Hana','days-of-hana','/posters/days-of-hana.jpg','/big-images/days-of-hana.jpg','Seokwoo',0,0,'A story of love between werewolf boy Haru and human girl Hana.','2020-03-15 10:28:40','2020-03-15 10:28:40'),(10,'Lookism','lookism','/posters/lookism.jpg','/big-images/lookism.jpg','Taejoon Park',0,0,'A miracle is about to happen to an unattractive loner guy.','2020-03-15 10:28:40','2020-03-15 10:28:40'),(11,'Refund High School','refundhighschool','/posters/refundhighschool.jpg','/big-images/refundhighschool.jpg','LICO',0,0,'Do you want a refund on your life? Start earning karma at The Refund High School to reincarnate as an ideal version of yourself.','2020-03-15 10:28:40','2020-03-15 10:28:40'),(12,'Tower of God','tower-of-god','/posters/tower-of-god.jpg','/big-images/tower-of-god.jpg','SIU',0,0,'What do you desire? Money and wealth? Honor and pride? Authority and power? Revenge? Or something that transcends them all? Whatever you desire—it\'s here.','2020-03-15 10:28:40','2020-03-15 10:28:40'),(13,'Noblesse','noblesse','/posters/noblesse.jpg','/big-images/noblesse.jpg','Jeho Son, Kwangsu Lee',0,0,'Rai wakes up from 820-years long sleep and starts his new life as a student in a high school founded by his loyal servant, Frankenstein. But his peaceful days with other human students are soon interrupted by mysterious attackers known as the \'Unions\'.','2020-03-15 10:28:40','2020-03-15 10:28:40');
 /*!40000 ALTER TABLE `Comic` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping data for table `Message`
+-- Dumping data for table `Comment`
 --
 
-LOCK TABLES `Message` WRITE;
-/*!40000 ALTER TABLE `Message` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Message` ENABLE KEYS */;
+LOCK TABLES `Comment` WRITE;
+/*!40000 ALTER TABLE `Comment` DISABLE KEYS */;
+INSERT INTO `Comment` VALUES (100000,100,10001,'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',0,'2020-04-13 10:04:17');
+/*!40000 ALTER TABLE `Comment` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping data for table `Genre`
+--
+
+LOCK TABLES `Genre` WRITE;
+/*!40000 ALTER TABLE `Genre` DISABLE KEYS */;
+INSERT INTO `Genre` VALUES (1,1,'romance'),(2,2,'romance'),(3,3,'romance'),(4,4,'romance'),(5,5,'romance'),(6,6,'romance'),(7,7,'romance'),(8,8,'drama'),(9,9,'drama'),(10,10,'drama'),(11,11,'fantasy'),(12,12,'fantasy'),(13,13,'action'),(14,1,'drama');
+/*!40000 ALTER TABLE `Genre` ENABLE KEYS */;
+UNLOCK TABLES;
+
 
 --
 -- Dumping data for table `Page`
@@ -46,7 +48,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `Page` WRITE;
 /*!40000 ALTER TABLE `Page` DISABLE KEYS */;
-INSERT INTO `Page` VALUES (1,1,1,1,NULL,'a',1),(2,2,1,1,NULL,'b',1),(3,3,1,1,NULL,'c',1),(4,1,NULL,2,NULL,NULL,1),(5,2,NULL,2,NULL,NULL,1),(6,3,NULL,2,NULL,NULL,1);
+INSERT INTO `Page` VALUES (1,1,10001,NULL,NULL,'/episodes/lore-olympus/001/watermark/1.jpg',1),(2,2,10001,NULL,NULL,'/episodes/lore-olympus/001/watermark/2.jpg',1),(3,3,10001,NULL,NULL,'/episodes/lore-olympus/001/watermark/3.jpg',1),(4,4,10001,NULL,NULL,'/episodes/lore-olympus/001/watermark/4.jpg',1),(5,5,10001,NULL,NULL,'/episodes/lore-olympus/001/watermark/5.jpg',1),(6,6,10001,NULL,NULL,'/episodes/lore-olympus/001/watermark/6.jpg',1),(7,7,10001,NULL,NULL,'/episodes/lore-olympus/001/watermark/7.jpg',1),(8,8,10001,NULL,NULL,'/episodes/lore-olympus/001/watermark/8.jpg',1),(9,1,10002,NULL,NULL,'/episodes/lore-olympus/002/watermark/1.jpg',1),(10,2,10002,NULL,NULL,'/episodes/lore-olympus/002/watermark/2.jpg',1),(11,3,10002,NULL,NULL,'/episodes/lore-olympus/002/watermark/3.jpg',1),(12,4,10002,NULL,NULL,'/episodes/lore-olympus/002/watermark/4.jpg',1),(13,5,10002,NULL,NULL,'/episodes/lore-olympus/002/watermark/5.jpg',1),(14,6,10002,NULL,NULL,'/episodes/lore-olympus/002/watermark/6.jpg',1),(15,7,10002,NULL,NULL,'/episodes/lore-olympus/002/watermark/7.jpg',1),(16,8,10002,NULL,NULL,'/episodes/lore-olympus/002/watermark/8.jpg',1),(17,1,10003,NULL,NULL,'/episodes/lore-olympus/003/watermark/1.jpg',1),(18,2,10003,NULL,NULL,'/episodes/lore-olympus/003/watermark/2.jpg',1),(19,3,10003,NULL,NULL,'/episodes/lore-olympus/003/watermark/3.jpg',1),(20,4,10003,NULL,NULL,'/episodes/lore-olympus/003/watermark/4.jpg',1),(21,5,10003,NULL,NULL,'/episodes/lore-olympus/003/watermark/5.jpg',1),(22,6,10003,NULL,NULL,'/episodes/lore-olympus/003/watermark/6.jpg',1),(23,7,10003,NULL,NULL,'/episodes/lore-olympus/003/watermark/7.jpg',1),(24,8,10003,NULL,NULL,'/episodes/lore-olympus/003/watermark/8.jpg',1),(25,1,10004,NULL,NULL,'/episodes/lore-olympus/004/watermark/1.jpg',1),(26,2,10004,NULL,NULL,'/episodes/lore-olympus/004/watermark/2.jpg',1),(27,3,10004,NULL,NULL,'/episodes/lore-olympus/004/watermark/3.jpg',1),(28,4,10004,NULL,NULL,'/episodes/lore-olympus/004/watermark/4.jpg',1),(29,5,10004,NULL,NULL,'/episodes/lore-olympus/004/watermark/5.jpg',1),(30,6,10004,NULL,NULL,'/episodes/lore-olympus/004/watermark/6.jpg',1),(31,7,10004,NULL,NULL,'/episodes/lore-olympus/004/watermark/7.jpg',1),(32,8,10004,NULL,NULL,'/episodes/lore-olympus/004/watermark/8.jpg',1),(33,1,10005,NULL,NULL,'/episodes/subzero/001/watermark/1.jpg',1),(34,2,10005,NULL,NULL,'/episodes/subzero/001/watermark/2.jpg',1),(35,3,10005,NULL,NULL,'/episodes/subzero/001/watermark/3.jpg',1),(36,4,10005,NULL,NULL,'/episodes/subzero/001/watermark/4.jpg',1),(37,5,10005,NULL,NULL,'/episodes/subzero/001/watermark/5.jpg',1),(38,6,10005,NULL,NULL,'/episodes/subzero/001/watermark/6.jpg',1),(39,7,10005,NULL,NULL,'/episodes/subzero/001/watermark/7.jpg',1),(40,8,10005,NULL,NULL,'/episodes/subzero/001/watermark/8.jpg',1),(41,1,10006,NULL,NULL,'/episodes/subzero/002/watermark/1.jpg',1),(42,2,10006,NULL,NULL,'/episodes/subzero/002/watermark/2.jpg',1),(43,3,10006,NULL,NULL,'/episodes/subzero/002/watermark/3.jpg',1),(44,4,10006,NULL,NULL,'/episodes/subzero/002/watermark/4.jpg',1),(45,5,10006,NULL,NULL,'/episodes/subzero/002/watermark/5.jpg',1),(46,6,10006,NULL,NULL,'/episodes/subzero/002/watermark/6.jpg',1),(47,7,10006,NULL,NULL,'/episodes/subzero/002/watermark/7.jpg',1),(48,8,10006,NULL,NULL,'/episodes/subzero/002/watermark/8.jpg',1),(49,1,10007,NULL,NULL,'/episodes/subzero/063/watermark/1.jpg',1),(50,2,10007,NULL,NULL,'/episodes/subzero/063/watermark/2.jpg',1),(51,3,10007,NULL,NULL,'/episodes/subzero/063/watermark/3.jpg',1),(52,4,10007,NULL,NULL,'/episodes/subzero/063/watermark/4.jpg',1),(53,5,10007,NULL,NULL,'/episodes/subzero/063/watermark/5.jpg',1),(54,6,10007,NULL,NULL,'/episodes/subzero/063/watermark/6.jpg',1),(55,7,10007,NULL,NULL,'/episodes/subzero/063/watermark/7.jpg',1),(56,8,10007,NULL,NULL,'/episodes/subzero/063/watermark/8.jpg',1),(57,1,10008,NULL,NULL,'/episodes/subzero/064/watermark/1.jpg',1),(58,2,10008,NULL,NULL,'/episodes/subzero/064/watermark/2.jpg',1),(59,3,10008,NULL,NULL,'/episodes/subzero/064/watermark/3.jpg',1),(60,4,10008,NULL,NULL,'/episodes/subzero/064/watermark/4.jpg',1),(61,5,10008,NULL,NULL,'/episodes/subzero/064/watermark/5.jpg',1),(62,6,10008,NULL,NULL,'/episodes/subzero/064/watermark/6.jpg',1),(63,7,10008,NULL,NULL,'/episodes/subzero/064/watermark/7.jpg',1),(64,8,10008,NULL,NULL,'/episodes/subzero/064/watermark/8.jpg',1),(65,1,10009,NULL,NULL,'/episodes/untouchable/001/watermark/1.jpg',1),(66,2,10009,NULL,NULL,'/episodes/untouchable/001/watermark/2.jpg',1),(67,3,10009,NULL,NULL,'/episodes/untouchable/001/watermark/3.jpg',1),(68,4,10009,NULL,NULL,'/episodes/untouchable/001/watermark/4.jpg',1),(69,5,10009,NULL,NULL,'/episodes/untouchable/001/watermark/5.jpg',1),(70,6,10009,NULL,NULL,'/episodes/untouchable/001/watermark/6.jpg',1),(71,7,10009,NULL,NULL,'/episodes/untouchable/001/watermark/7.jpg',1),(72,8,10009,NULL,NULL,'/episodes/untouchable/001/watermark/8.jpg',1),(73,1,10010,NULL,NULL,'/episodes/untouchable/002/watermark/1.jpg',1),(74,2,10010,NULL,NULL,'/episodes/untouchable/002/watermark/2.jpg',1),(75,3,10010,NULL,NULL,'/episodes/untouchable/002/watermark/3.jpg',1),(76,4,10010,NULL,NULL,'/episodes/untouchable/002/watermark/4.jpg',1),(77,5,10010,NULL,NULL,'/episodes/untouchable/002/watermark/5.jpg',1),(78,6,10010,NULL,NULL,'/episodes/untouchable/002/watermark/6.jpg',1),(79,7,10010,NULL,NULL,'/episodes/untouchable/002/watermark/7.jpg',1),(80,8,10010,NULL,NULL,'/episodes/untouchable/002/watermark/8.jpg',1);
 /*!40000 ALTER TABLE `Page` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,26 +59,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `Schedule` WRITE;
 /*!40000 ALTER TABLE `Schedule` DISABLE KEYS */;
+INSERT INTO `Schedule` VALUES (1,'2020-03-15 09:33:43','mon'),(2,'2020-03-15 09:33:43','mon'),(3,'2020-03-15 09:33:43','tue'),(4,'2020-03-15 09:33:43','wen'),(5,'2020-03-15 09:33:43','thu'),(6,'2020-03-15 09:33:43','fri'),(7,'2020-03-15 09:33:43','sat'),(8,'2020-03-15 09:33:43','sun'),(9,'2020-03-15 09:33:43','tue'),(10,'2020-03-15 09:33:43','thu'),(11,'2020-03-15 09:33:43','fri'),(12,'2020-03-15 09:33:43','sat'),(13,'2020-03-15 09:33:43','sun');
 /*!40000 ALTER TABLE `Schedule` ENABLE KEYS */;
 UNLOCK TABLES;
-
-
---
--- Dumping data for table `Volume`
---
-
-LOCK TABLES `Volume` WRITE;
-/*!40000 ALTER TABLE `Volume` DISABLE KEYS */;
-INSERT INTO `Volume` VALUES (1,1,1,'볼륨1',1);
-/*!40000 ALTER TABLE `Volume` ENABLE KEYS */;
-UNLOCK TABLES;
-
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

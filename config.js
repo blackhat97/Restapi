@@ -1,8 +1,22 @@
-module.exports = {
-  host: 'localhost',
-  port: '3306',
-  jwt_secret: 'Gz7X1Sf8W5w03PSTtSjtqd0mnaihDS6vrZKhZDFXD1srzFwntsh42vZkQpv2Q5pahrW+61wR9FtOkzsbGF8KXEQfccE2e9jP0Y9kpibG7aPBxvqCPVFbFEikqzBdOcjmMkGcaPcExIrMZ2kPuqDUtrus328iqwm50gQ6SFkqfUm/gZr0BGTu2WtGQqfYIpN9BVESLGJXZdeWWs3wUioB5QCsnLjqUZAdRkKDlIBfVaNd7x6FfTXpUCPoIbtr/7uRXes+EMANxx6Gnk6qCEp9V/qXzxUtLdivUWfPpw6TU9XSfE8uvHDSi21BgHB6J0ipqII11PnDnPBEp7sVIqMBnA==',
-  db_name: 'main',
-  db_user: 'root',
-  db_pass: 'wysl1@',
+'use strict';
+require('dotenv').config();
+
+let json = {};
+try {
+  json = require('./config/config.json');
+} catch (e) {
+  json = {};
+}
+
+const config = {
+  db: {
+    host: json.SQL_HOST || process.env.SQL_HOST,
+    user: json.SQL_USER || process.env.SQL_USER,
+    name: json.SQL_DATABASE || process.env.SQL_DATABASE,
+    pass: json.SQL_PASSWORD || process.env.SQL_PASSWORD,
+  },
+  jwtSecret: json.JWT_SECRET || process.env.JWT_SECRET || 'TestSecret',
+  sendgridAPIKey: json.SENDGRID_API_KEY || process.env.SENDGRID_API_KEY
 };
+
+module.exports = config;

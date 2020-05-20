@@ -5,27 +5,27 @@ var router = express.Router();
 const comicModel = require('../models/comic.model');
 
 /* GET all series */
-router.get('/comics', async (req, res, next) => {
+router.get('/weekly', async (req, res, next) => {
   try {
     const result = await comicModel.getAllComics();
-    res.json(result);
+    res.json({"results": result});
   } catch (err) {
     next(err);
     return;
   }
 });
 
-router.get('/comics/rank', async (req, res, next) => {
+router.get('/rank', async (req, res, next) => {
   try {
-    const result = await comicModel.getRankComics();
-    res.json(result);
+    const result = await comicModel.getRankComics();   
+    res.json({"results": result});
   } catch (err) {
     next(err);
     return;
   }
 });
 
-router.get('/info/:comicID', async (req, res, next) => {
+router.get('/:comicID', async (req, res, next) => {
   try {
     const comicID = req.params.comicID;
     const result = await comicModel.getComicInfo(comicID);
@@ -36,8 +36,19 @@ router.get('/info/:comicID', async (req, res, next) => {
   }
 });
 
+router.get('/:comicID/similar', async (req, res, next) => {
+  try {
+    const comicID = req.params.comicID;
+    const result = await comicModel.getSimilarComics(comicID);
+    res.json({"results": result});
+  } catch (err) {
+    next(err);
+    return;
+  }
+});
+
 /* Get a single comic from url */
-router.get('/content/:chapterID', async (req, res, next) => {
+router.get('/contents/:chapterID', async (req, res, next) => {
   try {
     const chapterID = req.params.chapterID;
     

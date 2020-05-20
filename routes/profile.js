@@ -9,7 +9,7 @@ const { db } = require('../models/db');
 router.get('/profiles/:profileID', async (req, res, next) => {
     try {
         const userInfoQuery = await db.query(`
-            SELECT username, biography, email, joined
+            SELECT displayName, biography, email, joined
             FROM main.Account
             WHERE profileID = ?
         `, [req.params.profileID]);

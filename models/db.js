@@ -9,10 +9,10 @@ const db = mysql.createPool({
   connectionLimit : 10,
   supportBigNumbers: true,
   bigNumberStrings: true,
-  host     : config.host,
-  user     : config.db_user,
-  password : config.db_pass,
-  database : config.db_name,
+  host     : config.db.host,
+  user     : config.db.user,
+  password : config.db.pass,
+  database : config.db.name,
   charset : "utf8_general_ci",
   multipleStatements: true
 });
