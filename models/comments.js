@@ -1,6 +1,6 @@
 
 module.exports = (sequelize, type) => {
-  var Comments = sequelize.define('Comment', {
+  var Comments = sequelize.define('Comments', {
     commentID: {
       type: type.BIGINT,
       allowNull: false,

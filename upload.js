@@ -1,24 +1,23 @@
 'use strict';
 
+const Storage = require('@google-cloud/storage');
 const Multer = require('multer');
 const sharp = require('sharp');
+const config = require('./config');
 
-
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, DIR);
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname);
-    }
+const storage = Storage({
+    projectId: config.cloudProject
 });
+
+const bucket = storage.bucket(config.cloudBucket);
 
 const multer = multer({
-    storage: storage,
+    storage: Multer.MemoryStorage,
     limits: {
-        fileSize: 10 * 1024 * 1024 // no larger than 10mb
+        fileSize: 5 * 1024 * 1024 // no larger than 5mb
     }
 });
+
 
 /**
  * Transcodes an image intp wepb format
@@ -39,7 +38,7 @@ const mimtypes = {
 
 
 /**
- * Uploads a file to Local
+ * Uploads a file to GCS
  *
  * @param {string} name The name of the file
  * @param {string} ext The file's extension
@@ -80,12 +79,12 @@ const getNameInfo = name => {
 
 
 /**
- * Geneartes a middleware that will upload a submited image to Storage
+ * Geneartes a middleware that will upload a submited image to Google Cloud Storage
  *
  * @param {boolean} multires True if the middleware should upload multiple resolutions of the image
  * @returns {function(Request, Response, NextFunction): void} Upload middleware
  */
-const sendUploadToLocal = multires => async (req, res, next) => {
+const sendUploadToGCS = async (req, res, next) => {
     if (!req.file) {
         return next();
     }
@@ -114,7 +113,7 @@ const getURLs = (key) => {
 
 };
 
-const deleteFromLocal = (filename) => {
+const deleteFromGCS = (filename) => {
     for (const url of getURLs(filename)) {
         bucket
             .file(url)
@@ -129,7 +128,7 @@ const deleteFromLocal = (filename) => {
 };
 
 module.exports = {
-    sendUploadToLocal,
-    deleteFromLocal,
+    sendUploadToGCS,
+    deleteFromGCS,
     multer
 };

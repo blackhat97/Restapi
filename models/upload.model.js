@@ -1,7 +1,7 @@
 'use strict';
 
 const { db } = require('./db');
-
+const upload = require('../upload');
 
 const postSeries = async (params) => {
     try {
