@@ -34,12 +34,12 @@ const upload = multer({
 
 
 router.post(
-  '/addComic',
+  '/addSeries',
   tokens.authorize,
   upload.multer.array('file'),
   upload.sendUploadToGCS(),
   async (req, res, next) => {
-    if (!req.files) {
+    if (!req.file || !req.file.fileKey) {
       res.status(400).send('No image uploaded');
       return;
     }
@@ -64,7 +64,7 @@ router.post(
   tokens.authorize,
   upload.multer.single('thumb'),
   upload.sendUploadToGCS(), 
-  async (req, res, next) => {
+  async (req, res) => {
     if (!req.file || !req.file.fileKey) {
       res.status(400).send('No image uploaded');
       return;
@@ -84,61 +84,16 @@ router.post(
 });
 
 router.post(
-  '/uploadPages',
-  tokens.authorize,
-  upload.multer.array('file'), 
-  upload.sendUploadToGCS(), 
-  async (req, res, next) => {
-    if (!req.files) {
-      res.status(400).send('No image uploaded');
+  '/uploadContents',
+  upload.array('file'), async (req, res) => {
+    console.log(req.files);
+    console.log(req.body.someField);
+    if(!req.files){
+      res.status(500).json({'success':false});
       return;
     }
-    try {
-      await uploadModel.addContents(
-        req.file.fileKey
-      );
-      res.status(201).json();
-    } catch (err) {
-      next(err);
-      return;
-    }
+    res.status(200).json({success:true,message:"File was uploaded successfully !"});
 });
 
-router.put('/updateComic',
-    tokens.authorize,
-    async (req, res, next) => {
-        try {
-            await comicModel.updateComic(
-                req.body.title,
-                req.body.description
-            );
-            res.sendStatus(200);
-        } catch (err) {
-            next(err);
-            return;
-        }
-    }
-);
-
-router.put('/updateThumb',
-    tokens.authorize,
-    upload.multer.single('thumbnail'),
-    validators.requiredAttributes(['comicID']),
-    upload.resizeTo(375, 253),
-    upload.sendUploadToGCS(false),
-    async (req, res, next) => {
-        if (!req.file || !req.file.fileKey) {
-            res.status(400).send('No image uploaded');
-            return;
-        }
-        try {
-            await comicModel.updateThumbnail(req.body.comicID, req.file.fileKey);
-            res.sendStatus(200);
-        } catch (err) {
-            next(err);
-            return;
-        }
-    }
-);
 
 module.exports = router;  

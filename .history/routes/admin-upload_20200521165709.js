@@ -34,7 +34,7 @@ const upload = multer({
 
 
 router.post(
-  '/addComic',
+  '/addSeries',
   tokens.authorize,
   upload.multer.array('file'),
   upload.sendUploadToGCS(),
@@ -84,7 +84,7 @@ router.post(
 });
 
 router.post(
-  '/uploadPages',
+  '/uploadContents',
   tokens.authorize,
   upload.multer.array('file'), 
   upload.sendUploadToGCS(), 
@@ -104,41 +104,5 @@ router.post(
     }
 });
 
-router.put('/updateComic',
-    tokens.authorize,
-    async (req, res, next) => {
-        try {
-            await comicModel.updateComic(
-                req.body.title,
-                req.body.description
-            );
-            res.sendStatus(200);
-        } catch (err) {
-            next(err);
-            return;
-        }
-    }
-);
-
-router.put('/updateThumb',
-    tokens.authorize,
-    upload.multer.single('thumbnail'),
-    validators.requiredAttributes(['comicID']),
-    upload.resizeTo(375, 253),
-    upload.sendUploadToGCS(false),
-    async (req, res, next) => {
-        if (!req.file || !req.file.fileKey) {
-            res.status(400).send('No image uploaded');
-            return;
-        }
-        try {
-            await comicModel.updateThumbnail(req.body.comicID, req.file.fileKey);
-            res.sendStatus(200);
-        } catch (err) {
-            next(err);
-            return;
-        }
-    }
-);
 
 module.exports = router;  
