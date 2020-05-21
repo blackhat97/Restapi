@@ -2,7 +2,7 @@ const express = require("express");
 var router = express.Router();
 const multer = require("multer");
 const DIR = 'public/tmp';
-const { db } = require('../models/db');
+const uploadModel = require('../models/upload.model');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -42,16 +42,10 @@ router.post('/upload-contents', upload.array('file'), async (req, res) => {
 
 
 router.post('/upload-series', upload.array('file'), async (req, res, next) => {
-  const title = req.body.title || '',
-	author = req.body.author || '',
-	description = req.body.description || '',
-	thumbUrl = req.body.thumbUrl || '',
-	backdropUrl = req.body.backdropUrl || '';
-
-  let insert_query = `INSERT INTO main.Comic (title, author, description, thumbnailUrl, coverUrl) VALUES (?, ?, ?, ?, ?, ?);`;
-
   try {
-    await db.query(insert_query, [title, author, description, thumbUrl, backdropUrl]);
+    const body = req.body;
+    const result = await uploadModel.postSeries(body);
+    res.json(result);
     res.sendStatus(200);
   } catch (err) {
     next(err);

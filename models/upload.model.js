@@ -3,10 +3,16 @@
 const { db } = require('./db');
 
 
-const postSeries = async () => {
+const postSeries = async (params) => {
     try {
+	const title = params.title || '',
+	      author = params.author || '',
+	      description = params.description || '',
+	      thumbUrl = params.thumbUrl || '',
+	      backdropUrl = params.backdropUrl || '';
+
         const result = await db.query(`
-	    INSERT INTO main.COmic (title, author, description, thumbnailUrl, coverUrl) VALUES (?, ?, ?, ?, ?);`);
+	    INSERT INTO main.Comic (title, author, description, thumbnailUrl, coverUrl) VALUES (?, ?, ?, ?, ?);`, [title, author, description, thumbUrl, backdropUrl]);
         
         return result;
 
